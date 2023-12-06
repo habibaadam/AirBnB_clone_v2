@@ -10,7 +10,7 @@ def do_pack():
     web_static folder
     """
     now = datetime.today()
-    file = f"versions/web_static_{now.year}{now.month}{now.day}{now.hour}
+    file = f"versions/web_static_{now.year}{now.month}{now.day}{now.hour}\
     {now.minute}{now.second}.tgz"
 
     print(f"Packing web_static to {file}")
