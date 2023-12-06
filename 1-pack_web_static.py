@@ -9,16 +9,18 @@ def do_pack():
     """ Generates a .tgz archive from the contents of the
     web_static folder
     """
-    now = datetime.utcnow()
-    file = "versions/web_static_{}{}{}{}{}{}.tgz".format(now.year,
-                                                         now.month,
-                                                         now.day,
-                                                         now.hour,
-                                                         now.minute,
-                                                         now.second)
-    if os.path.isdir("versions") is False:
-        if local("mkdir -p versions").failed is True:
-            return None
-    if local("tar -cvzf {} web_static".format(file)).failed is True:
+    now = datetime.today()
+    file = f"versions/web_static_{now.year}{now.month}{now.day}{now.hour}
+    {now.minute}{now.second}.tgz"
+
+    print(f"Packing web_static to {file}")
+    if not os.path.exists("versions/"):
+        local("mkdir versions/")
+
+    res = local(f"tar -cvzf {file} web_static/")
+    if res.failed:
         return None
-    return file
+    else:
+        archive_size = os.path.getsize(file)
+        print(f"web_static packed: {file} -> {archive_size}Bytes")
+        return file
