@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Generates a .tgz arhcive from the files in web_static"""
+# Generates a .tgz arhcive from the files in web_static
 
 import os.path
 from datetime import datetime
