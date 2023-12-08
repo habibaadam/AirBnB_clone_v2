@@ -11,8 +11,8 @@ def do_pack():
     web_static folder
     """
     now = datetime.today()
-    file = f"versions/web_static_{now.year}{now.month:02d}{now.day:02d}{now.hour:02d}" \
-           f"{now.minute:02d}{now.second:02d}.tgz"
+    file = f"versions/web_static_{now.year}{now.month:02d}{now.day:02d}\
+{now.hour:02d}"f"{now.minute:02d}{now.second:02d}.tgz"
 
     print(f"Packing web_static to {file}")
     if not os.path.exists("versions/"):
