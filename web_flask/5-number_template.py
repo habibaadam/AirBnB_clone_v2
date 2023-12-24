@@ -11,6 +11,7 @@ replacing all underscore with a space
 replacing all underscore with a space
 /number/<n>: displays 'n is a number' only if n is an integer
 /number_template/<n>: display a HTML page only if n is an integer
+
 """
 from flask import Flask
 from flask import render_template
