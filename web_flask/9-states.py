@@ -17,20 +17,17 @@ def close(self):
 @app.route('/states', strict_slashes=False)
 def show_state():
     """Displays an HTML page with a list of all States in DBStorage"""
-    states = storage.all(State)
-    return render_template('9-states.html', states=states)
+    state = storage.all(State)
+    return render_template('9-states.html', state=state)
 
 
 @app.route("/states/<id>", strict_slashes=False)
-def state_id(id):
-    """list the cities of the state id specified"""
-    myList = [obj for obj in storage.all("State").values()
-              if obj.id == escape(id)]
-    if len(myList) == 1:
-        state = myList[0]
-    else:
-        state = None
-    return render_template("9-states.html", state_id=id, state=state)
+def states_id(id):
+    """displays an html page based on the state id"""
+    for state in storage.all("State").values():
+        if state.id == id:
+            return render_template("9-states.html", state=state)
+    return render_template("9-states.html")
 
 
 if __name__ == '__main__':
